@@ -27,17 +27,17 @@ def add_expense():
             writer = csv.writer(file)
             writer.writerow([amount, category, date])
 
-        print("✅ Expense added successfully!\n")
+        print("Expense added successfully!\n")
 
     except ValueError:
-        print("❌ Invalid amount. Please enter numeric value.\n")
+        print("Invalid amount. Please enter numeric value.\n")
 
 
 def view_expenses():
     try:
         with open(FILE_NAME, mode="r") as file:
             reader = csv.reader(file)
-            next(reader)  # skip header
+            next(reader)  
             print("\n--- All Expenses ---")
             for row in reader:
                 print(f"Amount: {row[0]}, Category: {row[1]}, Date: {row[2]}")
@@ -59,7 +59,7 @@ def monthly_summary():
             if row[2].startswith(month):
                 total += float(row[0])
 
-    print(f"\n💰 Total expenses for {month}: {total}\n")
+    print(f"\nTotal expenses for {month}: {total}\n")
 
 
 def category_analysis():
@@ -78,7 +78,7 @@ def category_analysis():
             else:
                 categories[category] = amount
 
-    print("\n📊 Spending by Category:")
+    print("\nSpending by Category:")
     for cat, amt in categories.items():
         print(f"{cat}: {amt}")
 
@@ -109,11 +109,12 @@ def main():
         elif choice == "4":
             category_analysis()
         elif choice == "5":
-            print("Goodbye 👋")
+            print("Goodbye")
             break
         else:
-            print("❌ Invalid choice\n")
+            print("Invalid choice\n")
 
 
 if __name__ == "__main__":
+
     main()
